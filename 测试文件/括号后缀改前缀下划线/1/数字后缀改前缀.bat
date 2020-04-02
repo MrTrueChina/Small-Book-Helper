@@ -1,49 +1,49 @@
 @echo off
 
-:: å»¶è¿ŸçŽ¯å¢ƒå˜é‡æ‰©å±•
+:: ÑÓ³Ù»·¾³±äÁ¿À©Õ¹
 setlocal EnableDelayedExpansion
 
 
-:: æ­¤å¤„çš„setä»…ç”¨äºŽè®°å½•ä½¿ç”¨åˆ°çš„å…¨å±€å˜é‡ï¼Œå¯¹å®žé™…åŠŸèƒ½æ²¡æœ‰å½±å“
+:: ´Ë´¦µÄset½öÓÃÓÚ¼ÇÂ¼Ê¹ÓÃµ½µÄÈ«¾Ö±äÁ¿£¬¶ÔÊµ¼Ê¹¦ÄÜÃ»ÓÐÓ°Ïì
 
-:: ä¸åŒ…æ‹¬æ‰©å±•åçš„æ–‡ä»¶å
+:: ²»°üÀ¨À©Õ¹ÃûµÄÎÄ¼þÃû
 set fileName= 
-:: æ–‡ä»¶çš„æ­£ç¡®åºå·å‰ç¼€
+:: ÎÄ¼þµÄÕýÈ·ÐòºÅÇ°×º
 set number= 
-:: é™¤åŽ»åŽç¼€çš„æœ‰æ•ˆæ–‡ä»¶å
+:: ³ýÈ¥ºó×ºµÄÓÐÐ§ÎÄ¼þÃû
 set effectiveName= 
-:: åŽç¼€å
+:: ºó×ºÃû
 set extensionName= 
-:: æ–°æ–‡ä»¶å
+:: ÐÂÎÄ¼þÃû
 set newName= 
-:: ä¸åŒ…æ‹¬æ‰©å±•åçš„æ–‡ä»¶åé•¿åº¦
+:: ²»°üÀ¨À©Õ¹ÃûµÄÎÄ¼þÃû³¤¶È
 set fileNameLength=
-:: æ•°å­—åŽç¼€çš„æ­£æ‹¬å·ç´¢å¼•
+:: Êý×Öºó×ºµÄÕýÀ¨ºÅË÷Òý
 set numberBracketIndex=
-:: æ•°å­—åŽç¼€çš„åæ‹¬å·ç´¢å¼•
+:: Êý×Öºó×ºµÄ·´À¨ºÅË÷Òý
 set numberReverseBracketIndex=
-:: æ•°å­—åŽç¼€çš„æ•°å­—
+:: Êý×Öºó×ºµÄÊý×Ö
 set number=
 
-:: GetStringLength çš„è¿”å›žå€¼
+:: GetStringLength µÄ·µ»ØÖµ
 set getStringLengthResult=
-:: LastCharIndexOf çš„è¿”å›žå€¼
+:: LastCharIndexOf µÄ·µ»ØÖµ
 set lastCharIndexOfResult=
 
 
 ::echo Start rename
 
-:: èŽ·å–åˆ°éœ€è¦æ”¹åçš„æ‰€æœ‰æ–‡ä»¶åï¼ˆé™¤äº†æ‰¹å¤„ç†çš„æ‰€æœ‰æ–‡ä»¶ï¼‰
-:: ä¾æ¬¡é‡å‘½å
+:: »ñÈ¡µ½ÐèÒª¸ÄÃûµÄËùÓÐÎÄ¼þÃû£¨³ýÁËÅú´¦ÀíµÄËùÓÐÎÄ¼þ£©
+:: ÒÀ´ÎÖØÃüÃû
 FOR %%G IN (*.bmp *.jpg *.png *.tif *.gif *.pcx *.tga *.exif *.fpx *.svg *.psd *.cdr *.pcd *.dxf *.ufo *.eps *.ai *.raw *.WMF *.webp) DO (
     call :RenameFile "%%G"
 )
 call :Exit
 
-:: è®¡ç®—ä¿®æ”¹åŽçš„æ–‡ä»¶å
-:: é‡å‘½åä¸º ä¿®æ”¹åŽæ–‡ä»¶å + æ‰©å±•å
+:: ¼ÆËãÐÞ¸ÄºóµÄÎÄ¼þÃû
+:: ÖØÃüÃûÎª ÐÞ¸ÄºóÎÄ¼þÃû + À©Õ¹Ãû
 :RenameFile
-    :: %~1ï¼šèŽ·å–ç¬¬ä¸€ä¸ªå‚æ•°å¹¶åŽ»é™¤é¦–å°¾åŒå¼•å·ï¼Œæ²¡æœ‰åˆ™æ— å½±å“
+    :: %~1£º»ñÈ¡µÚÒ»¸ö²ÎÊý²¢È¥³ýÊ×Î²Ë«ÒýºÅ£¬Ã»ÓÐÔòÎÞÓ°Ïì
     call :GetNewName "%~1"
     ::echo Rename %~1
     xcopy "%fileName%%extensionName%" ".\rename\" /i
@@ -51,15 +51,15 @@ call :Exit
     ::echo ----------------
     goto :eof
 
-:: åˆ†å‰²æš‚å­˜æ–‡ä»¶åå’Œæ‰©å±•å
-:: å°†æ–‡ä»¶åæ‹†åˆ†ä¸ºæœ‰æ•ˆæ–‡ä»¶åå’ŒåŽç¼€
-:: æŠŠåŽç¼€é‡Œçš„åºå·æŒ‘å‡ºæ¥ï¼Œæ²¡æœ‰åŽç¼€çš„è¡¥ 1 æˆ–é»˜è®¤å€¼ 1
-:: ä¿®æ”¹åŽæ–‡ä»¶å = åºå·_æœ‰æ•ˆæ–‡ä»¶å  
+:: ·Ö¸îÔÝ´æÎÄ¼þÃûºÍÀ©Õ¹Ãû
+:: ½«ÎÄ¼þÃû²ð·ÖÎªÓÐÐ§ÎÄ¼þÃûºÍºó×º
+:: °Ñºó×ºÀïµÄÐòºÅÌô³öÀ´£¬Ã»ÓÐºó×ºµÄ²¹ 1 »òÄ¬ÈÏÖµ 1
+:: ÐÞ¸ÄºóÎÄ¼þÃû = ÐòºÅ_ÓÐÐ§ÎÄ¼þÃû  
 :GetNewName
     ::echo Get new name by %~1
-    :: ~nï¼šæ‰©å±•åˆ°ä»…æ–‡ä»¶å
+    :: ~n£ºÀ©Õ¹µ½½öÎÄ¼þÃû
     set fileName=%~n1
-    :: ~xï¼šæ‰©å±•åˆ°ä»…æ‰©å±•å
+    :: ~x£ºÀ©Õ¹µ½½öÀ©Õ¹Ãû
     set extensionName=%~x1
 
     call :GetNumberBracketIndex "%fileName%"
@@ -79,12 +79,12 @@ call :Exit
     ::echo Index of number is [%numberBracketIndex%-%numberReverseBracketIndex%]
     goto :eof
 
-:: æ‹¬å·æ•°å­—åŽç¼€ï¼Œæ˜¯æŒ‡åœ¨æ–‡ä»¶åæœ«å°¾æœ‰æ‹¬å·æ‹¬ä½çš„æ•°å­—ï¼Œå‰é¢å¯èƒ½æœ‰ç©ºæ ¼åˆ†éš”ä¹Ÿå¯èƒ½æ²¡æœ‰ç©ºæ ¼åˆ†éš”
-:: æœ€åŽä¸€ä¸ªå­—ç¬¦æ˜¯åæ‹¬å·
-:: æœ‰æ­£æ‹¬å·
-:: ä¸­é—´æ˜¯æ•°å­—
-:: å…ˆèŽ·å–æ­£åæ‹¬å·ç´¢å¼•
-:: æ ¹æ®ç´¢å¼•åˆ¤æ–­æ˜¯ä¸æ˜¯å¯¹çš„
+:: À¨ºÅÊý×Öºó×º£¬ÊÇÖ¸ÔÚÎÄ¼þÃûÄ©Î²ÓÐÀ¨ºÅÀ¨×¡µÄÊý×Ö£¬Ç°Ãæ¿ÉÄÜÓÐ¿Õ¸ñ·Ö¸ôÒ²¿ÉÄÜÃ»ÓÐ¿Õ¸ñ·Ö¸ô
+:: ×îºóÒ»¸ö×Ö·ûÊÇ·´À¨ºÅ
+:: ÓÐÕýÀ¨ºÅ
+:: ÖÐ¼äÊÇÊý×Ö
+:: ÏÈ»ñÈ¡Õý·´À¨ºÅË÷Òý
+:: ¸ù¾ÝË÷ÒýÅÐ¶ÏÊÇ²»ÊÇ¶ÔµÄ
 :GetNumber
     set getNumberFileName=%~1
     set /a getNumberStartIndex=%numberBracketIndex%+1
