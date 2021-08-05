@@ -20,7 +20,7 @@ mergedFilePath = currentFloderPath + "\\" + mergedFileName
 if(os.path.exists(mergedFilePath)):
     os.remove(mergedFilePath)
 
-# 获取当前文件夹中的文件名称列表  
+# 获取当前文件夹中的文件名称列表
 allFiles = os.listdir(currentFloderPath)
 
 # 对 .txt 后缀的正则，re.I 是无视大小写
