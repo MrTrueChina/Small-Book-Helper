@@ -1,26 +1,7 @@
-echo off
+@REM 这个脚本的主要目标是在小薄本助手添加进 环境变量 Path 的时候给 cmd 窗口一个不用输入 .py 后缀的选择
 
-echo ==小薄本助手==
-echo (S) 创建子文件夹    (R) 数字后缀改前缀
-set /p functionalTypes = 请选择使用功能
-pause>nul
+@REM 设置为 UTF-8 编码
+chcp 65001
 
-if functionalTypes equ s call :CreateSubFolders
-if functionalTypes equ S call :CreateSubFolders
-
-call :Exit
-
-
-:CreateSubFolders
-    echo 创建子文件夹
-    goto :eof
-
-
-:SuffixToPrefix
-    echo 数字后缀改前缀
-    goto :eof
-
-
-:Exit
-    pause>nul
-    exit
+@REM 调用 小薄本助手.py
+小薄本助手.py
