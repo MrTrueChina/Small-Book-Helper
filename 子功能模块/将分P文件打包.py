@@ -42,6 +42,11 @@ for currentFile in allFiles:
 # 去除所有只有一个文件的打包记录，这些文件不用打包
 packDictonary = {key:val for key, val in packDictonary.items() if len(val) > 1}
 
+# 如果没有可以打包的文件则直接结束
+if(len(packDictonary.keys()) < 1):
+    print("没有可以打包的文件")
+    exit()
+
 # 输出提示内容
 print("\n将会打包出下列文件夹：\n")
 for key in packDictonary.keys():
