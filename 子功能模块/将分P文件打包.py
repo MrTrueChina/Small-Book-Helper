@@ -5,10 +5,10 @@ import shutil
 
 # 输出提示
 print("这个脚本的打包标准是这样的：")
-print("1.只有名称为 XXXXX_p数字 的文件会被认为是分P的文件")
-print("2.XXXXX_p数字 前面的 XXXXX_p 部分相同的文件会被打包")
+print("1.只有名称为 XXXXX_pXX 的文件会被认为是分P的文件")
+print("2.XXXXX_pXX 前面的 XXXXX_p 部分相同的文件会被打包")
 print("3.符合打包标准的文件后缀名不同也会被打包")
-print("4.打包的文件夹名称是 XXXXX_p数字 中的 XXXXX")
+print("4.打包的文件夹名称是 XXXXX_pXX 中的 XXXXX")
 print("5.只会打包当前文件夹里的文件，不会打包当前文件夹里的文件夹里的文件")
 
 # 确认打包提示
