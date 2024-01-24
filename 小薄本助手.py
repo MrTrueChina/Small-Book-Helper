@@ -17,7 +17,9 @@ print("(MQ) 以起点逻辑合并文本文件")
 print("(RU) 图片括号数字后缀改前缀下划线")
 print("(RP) 重命名文件名为分P名称")
 print("(P) 将分p文件打包")
+print("(JTG) 将.jpe 文件改为 .jpeg 文件")
 print("(KCRH) 砍口垒功能，递归移除文件夹中所有名字中带有\".hack\"的文件的文件名中的\".hack\"")
+print("(STEP) Stash 功能，给没有图片和视频的子文件夹添加默认图片")
 
 # 选择功能
 subFolderNumberInput = input("\n")
@@ -50,9 +52,19 @@ if(subFolderNumberInput == "p"):
     os.system(scriptFolderPath + "\\子功能模块\\将分P文件打包.py")
     exit()
 
+# JTG：Jpe Tp jpeG
+if(subFolderNumberInput == "jtg"):
+    os.system(scriptFolderPath + "\\子功能模块\\jpe后缀改为jpeg后缀.py")
+    exit()
+
 # KCRH：Kan Colle Remove Hack
 if(subFolderNumberInput == "kcrh"):
     os.system(scriptFolderPath + "\\子功能模块\\移除Hack部分文件名.py")
+    exit()
+
+# STEP: STash Empty Page
+if(subFolderNumberInput == "step"):
+    os.system(scriptFolderPath + "\\子功能模块\\给没有图片和视频的子文件夹添加默认图片.py")
     exit()
 
 print("没有这个功能")
